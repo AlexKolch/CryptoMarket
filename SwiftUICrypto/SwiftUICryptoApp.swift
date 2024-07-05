@@ -11,7 +11,17 @@ import SwiftUI
 struct SwiftUICryptoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if #available(iOS 16.0, *) {
+                NavigationStack {
+                    HomeView()
+                        .toolbar(.hidden)
+                }
+            } else {
+                NavigationView {
+                    HomeView()
+                        .navigationBarHidden(true)
+                }
+            }
         }
     }
 }
