@@ -10,6 +10,7 @@
 		FCC8FD302C37EF5F0076CA1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD2F2C37EF5F0076CA1C /* HomeView.swift */; };
 		FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD322C37F1ED0076CA1C /* CircleButtonView.swift */; };
 		FCC8FD352C3805260076CA1C /* AnimateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */; };
+		FCC8FD382C3810C60076CA1C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD372C3810C60076CA1C /* Coin.swift */; };
 		FCCCB1CF2C37D27A00370668 /* SwiftUICryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */; };
 		FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCB1D02C37D27A00370668 /* ContentView.swift */; };
 		FCCCB1D62C37D27B00370668 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCCB1D52C37D27B00370668 /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		FCC8FD2F2C37EF5F0076CA1C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FCC8FD322C37F1ED0076CA1C /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateCircleView.swift; sourceTree = "<group>"; };
+		FCC8FD372C3810C60076CA1C /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		FCCCB1CB2C37D27A00370668 /* SwiftUICrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICryptoApp.swift; sourceTree = "<group>"; };
 		FCCCB1D02C37D27A00370668 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		FCC8FD362C3810AA0076CA1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCC8FD372C3810C60076CA1C /* Coin.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FCCCB1C22C37D27A00370668 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		FCCCB1CD2C37D27A00370668 /* SwiftUICrypto */ = {
 			isa = PBXGroup;
 			children = (
+				FCC8FD362C3810AA0076CA1C /* Models */,
 				FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */,
 				FCCCB1D02C37D27A00370668 /* ContentView.swift */,
 				FCC8FD312C37F1CA0076CA1C /* Components */,
@@ -178,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC8FD382C3810C60076CA1C /* Coin.swift in Sources */,
 				FCC8FD302C37EF5F0076CA1C /* HomeView.swift in Sources */,
 				FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */,
 				FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */,
