@@ -9,15 +9,27 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio = false
-
+    
     var body: some View {
         ZStack {
             Color.myBackground
                 .ignoresSafeArea()
             ///content layer
             VStack {
-              homeHeader
+                homeHeader
+                columnTitles
+                
+                //List
+                if !showPortfolio {
+                    allCoinsList
+                        .transition(.move(edge: .leading))
+                } else {
+                    portfolioCoinsList
+                        .transition(.move(edge: .trailing))
+                }
+                
                 Spacer(minLength: 0)
             }
         }
@@ -28,7 +40,7 @@ struct HomeView: View {
     NavigationView {
         HomeView()
             .navigationBarHidden(true)
-    }
+    }.environmentObject(HomeViewModel())
 }
 
 private extension HomeView {
@@ -58,6 +70,40 @@ private extension HomeView {
                 }
         }
         .padding(.horizontal)
+    }
+    
+    var columnTitles: some View {
+        HStack {
+            Text("Coin")
+            Spacer()
+            if showPortfolio {
+                Text("Holdings")
+            }
+            Text("Price").frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+        }
+        .font(.caption)
+        .foregroundStyle(.secondaryText)
+        .padding(.horizontal)
+    }
+    
+    var allCoinsList: some View {
+        List {
+            ForEach(vm.allCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: false)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+            }
+        }
+        .listStyle(.plain)
+    }
+    
+    var portfolioCoinsList: some View {
+        List {
+            ForEach(vm.portfolioCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: true)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+            }
+        }
+        .listStyle(.plain)
     }
     
 }
