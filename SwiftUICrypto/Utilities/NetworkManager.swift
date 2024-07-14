@@ -26,7 +26,7 @@ final class NetworkManager {
     static func downloadData(for url: URL) -> AnyPublisher<Data, Error> {
        return URLSession.shared.dataTaskPublisher(for: url)
              .subscribe(on: DispatchQueue.global(qos: .default)) //меняет контекст выполнения на бэк поток
-             .tryMap { (result) -> Data in
+             .tryMap { (result) -> Data in //tryMap - преобразует данные в какой-либо тип
                      //проверяем данные
                  guard let response = result.response as? HTTPURLResponse,
                        response.statusCode >= 200 && response.statusCode < 300 else {

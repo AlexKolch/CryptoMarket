@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>37</string>
+					<key>EndingLineNumber</key>
+					<string>44</string>
+					<key>StartingColumnNumber</key>
+					<string>10</string>
+					<key>StartingLineNumber</key>
+					<string>44</string>
+					<key>Timestamp</key>
+					<string>742647588.266371</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SwiftUICrypto/Home/Views/CoinRowView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>  CoinImageView(coin: coin)</string>
+				<key>leading</key>
+				<string>                .foregroundStyle(.secondaryText)
+                .frame(minWidth: 30)
+          </string>
+				<key>trailing</key>
+				<string>
+                .frame(width: 30, height: 30)
+            Text(coin.symbol.uppercased())
+</string>
+			</dict>
+			<key>title</key>
+			<string>Изображение монеты</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>
