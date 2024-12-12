@@ -10,15 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>37</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>44</string>
+					<string>45</string>
 					<key>StartingColumnNumber</key>
-					<string>10</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>44</string>
 					<key>Timestamp</key>
-					<string>742647588.266371</string>
+					<string>755720051.692178</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,15 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>  CoinImageView(coin: coin)</string>
+				<string>            CoinImageView(coin: coin)
+</string>
 				<key>leading</key>
 				<string>                .foregroundStyle(.secondaryText)
                 .frame(minWidth: 30)
-          </string>
+</string>
 				<key>trailing</key>
-				<string>
-                .frame(width: 30, height: 30)
+				<string>                .frame(width: 30, height: 30)
             Text(coin.symbol.uppercased())
+                .font(.headline)
 </string>
 			</dict>
 			<key>title</key>

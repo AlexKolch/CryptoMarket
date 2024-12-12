@@ -10,7 +10,7 @@ import Combine
 
 final class CoinDataService {
     
-    @Published var allCoins: [Coin] = []
+    @Published var allCoins: [CoinModel] = []
 //    var cancellables = Set<AnyCancellable>()
     /// здесь подписка на получение монет, чтобы потом было удобно отменить именно ее и не искать во множестве cancellables
     var coinSubscription: AnyCancellable?
@@ -23,7 +23,7 @@ final class CoinDataService {
         guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250&sparkline=true&price_change_percentage=24h") else {return}
         
         coinSubscription = NetworkManager.downloadData(for: url)
-            .decode(type: [Coin].self, decoder: JSONDecoder())
+            .decode(type: [CoinModel].self, decoder: JSONDecoder())
             .sink { completion in
                 switch completion {
                 case .finished:

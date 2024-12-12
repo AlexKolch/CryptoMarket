@@ -47,7 +47,7 @@ URL: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250
 }
  */
 
-struct Coin: Identifiable, Decodable {
+struct CoinModel: Identifiable, Decodable {
     let id: String
     let name: String
     let symbol: String
@@ -112,8 +112,8 @@ struct Coin: Identifiable, Decodable {
     }
     
     ///обновить монету исходя из их количества
-    func updateHoldings(amount: Double) -> Coin {
-        return Coin(id: id, name: name, symbol: symbol, image: image, currentPrice: currentPrice, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, circulatingSupply: circulatingSupply, fullyDilutedValuation: fullyDilutedValuation, high24H: high24H, lastUpdated: lastUpdated, low24H: low24H, marketCap: marketCap, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, marketCapRank: marketCapRank, maxSupply: maxSupply, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, sparklineIn7D: sparklineIn7D, totalSupply: totalSupply, totalVolume: totalVolume, currentCountHoldings: amount)
+    func updateHoldings(amount: Double) -> CoinModel {
+        return CoinModel(id: id, name: name, symbol: symbol, image: image, currentPrice: currentPrice, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, circulatingSupply: circulatingSupply, fullyDilutedValuation: fullyDilutedValuation, high24H: high24H, lastUpdated: lastUpdated, low24H: low24H, marketCap: marketCap, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, marketCapRank: marketCapRank, maxSupply: maxSupply, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, sparklineIn7D: sparklineIn7D, totalSupply: totalSupply, totalVolume: totalVolume, currentCountHoldings: amount)
     }
 }
 
@@ -123,7 +123,7 @@ struct SparklineIn7D: Decodable {
 
 ///Moc data
 final class MocPreview {
-   static let coin = Coin(id: "bitcoin", name: "Bitcoin", symbol: "btc", image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579", currentPrice: 61408, ath: 61712, athChangePercentage: -0.97589, athDate: "2021-03-13T20:49:26.606Z", atl: 67.81, atlChangePercentage: 90020.24075, atlDate: "2013-07-06T00:00:00.000Z", circulatingSupply: 18653043, fullyDilutedValuation: 1285385611303, high24H: 61712, lastUpdated: "2021-03-13T23:18:10.268Z", low24H: 56220, marketCap: 1141731099010, marketCapChange24H: 72110681879, marketCapChangePercentage24H: 6.74171, marketCapRank: 1, maxSupply: 21000000, priceChange24H: 3952.64, priceChangePercentage24H: 6.87944, priceChangePercentage24HInCurrency: 3952.64, sparklineIn7D: SparklineIn7D(price: [
+   static let coin = CoinModel(id: "bitcoin", name: "Bitcoin", symbol: "btc", image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579", currentPrice: 61408, ath: 61712, athChangePercentage: -0.97589, athDate: "2021-03-13T20:49:26.606Z", atl: 67.81, atlChangePercentage: 90020.24075, atlDate: "2013-07-06T00:00:00.000Z", circulatingSupply: 18653043, fullyDilutedValuation: 1285385611303, high24H: 61712, lastUpdated: "2021-03-13T23:18:10.268Z", low24H: 56220, marketCap: 1141731099010, marketCapChange24H: 72110681879, marketCapChangePercentage24H: 6.74171, marketCapRank: 1, maxSupply: 21000000, priceChange24H: 3952.64, priceChangePercentage24H: 6.87944, priceChangePercentage24HInCurrency: 3952.64, sparklineIn7D: SparklineIn7D(price: [
         54019.26878317463,
         53718.060935791524,
         53677.12968669343,

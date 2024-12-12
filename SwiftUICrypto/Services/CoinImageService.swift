@@ -13,13 +13,13 @@ final class CoinImageService {
     
     @Published var image: UIImage? = nil //сюда будем возвращать загруженную картинку
     
-    private let coin: Coin
+    private let coin: CoinModel
     private let fileManager = LocalFileManager.shared
     private var imageSubscription: AnyCancellable?
     private let folderName: String = "coin_images"
     private let imageName: String
     
-    init(coin: Coin) {
+    init(coin: CoinModel) {
         self.coin = coin
         self.imageName = coin.id
         getCoinImage()

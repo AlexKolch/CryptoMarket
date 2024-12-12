@@ -10,8 +10,15 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var allCoins: [Coin] = []
-    @Published var portfolioCoins: [Coin] = []
+    @Published var statistics = [
+    StatisticModel(title: "Title", value: "Value", percentageChange: 1),
+    StatisticModel(title: "Title", value: "Value"),
+    StatisticModel(title: "Title", value: "Value"),
+    StatisticModel(title: "Title", value: "Value", percentageChange: -1),
+    ]
+    
+    @Published var allCoins: [CoinModel] = []
+    @Published var portfolioCoins: [CoinModel] = []
     
     @Published var searchText: String = ""
     
@@ -41,7 +48,7 @@ final class HomeViewModel: ObservableObject {
         //сделаем задержку, чтобы функция фильтрации не запускалась сразу же после ввода
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
         //преобразуем вводимый текст в массив результата поиска
-            .map { (inputText, allCoins) -> [Coin] in //после combineLatest мы имеем в параметрах вводимый текст и массив монет
+            .map { (inputText, allCoins) -> [CoinModel] in //после combineLatest мы имеем в параметрах вводимый текст и массив монет
                 //если searchBar пустой, то возвращаем все монеты
                 guard !inputText.isEmpty else {
                     return allCoins
