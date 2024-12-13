@@ -13,6 +13,8 @@
 		FC29B5062D0B37DB004BECE7 /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5052D0B37DB004BECE7 /* StatisticModel.swift */; };
 		FC29B5082D0B3C47004BECE7 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5072D0B3C47004BECE7 /* StatisticView.swift */; };
 		FC29B50A2D0B586D004BECE7 /* HeaderStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5092D0B586D004BECE7 /* HeaderStatsView.swift */; };
+		FC29B50C2D0C54EA004BECE7 /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B50B2D0C54EA004BECE7 /* MarketDataModel.swift */; };
+		FC29B50E2D0C6D55004BECE7 /* MarketDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B50D2D0C6D55004BECE7 /* MarketDataService.swift */; };
 		FC5CAF852C3E70D50029AB49 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF842C3E70D50029AB49 /* NetworkManager.swift */; };
 		FC5CAF872C42E4F30029AB49 /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF862C42E4F30029AB49 /* CoinImageView.swift */; };
 		FC5CAF892C42FE950029AB49 /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF882C42FE950029AB49 /* CoinImageService.swift */; };
@@ -38,6 +40,8 @@
 		FC29B5052D0B37DB004BECE7 /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
 		FC29B5072D0B3C47004BECE7 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		FC29B5092D0B586D004BECE7 /* HeaderStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStatsView.swift; sourceTree = "<group>"; };
+		FC29B50B2D0C54EA004BECE7 /* MarketDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataModel.swift; sourceTree = "<group>"; };
+		FC29B50D2D0C6D55004BECE7 /* MarketDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataService.swift; sourceTree = "<group>"; };
 		FC5CAF842C3E70D50029AB49 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FC5CAF862C42E4F30029AB49 /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
 		FC5CAF882C42FE950029AB49 /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			children = (
 				FCC8FD372C3810C60076CA1C /* CoinModel.swift */,
 				FC29B5052D0B37DB004BECE7 /* StatisticModel.swift */,
+				FC29B50B2D0C54EA004BECE7 /* MarketDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			children = (
 				FCC8FD432C3D3F1C0076CA1C /* CoinDataService.swift */,
 				FC5CAF882C42FE950029AB49 /* CoinImageService.swift */,
+				FC29B50D2D0C6D55004BECE7 /* MarketDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				FC0BB7BB2CAAC63F00F40279 /* SearchBarView.swift in Sources */,
 				FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */,
 				FC5CAF852C3E70D50029AB49 /* NetworkManager.swift in Sources */,
+				FC29B50C2D0C54EA004BECE7 /* MarketDataModel.swift in Sources */,
 				FC5CAF872C42E4F30029AB49 /* CoinImageView.swift in Sources */,
 				FCC8FD3F2C3BFE150076CA1C /* Double + Ext..swift in Sources */,
 				FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */,
@@ -279,6 +286,7 @@
 				FC29B5082D0B3C47004BECE7 /* StatisticView.swift in Sources */,
 				FCC8FD3A2C383C960076CA1C /* CoinRowView.swift in Sources */,
 				FCC8FD442C3D3F1C0076CA1C /* CoinDataService.swift in Sources */,
+				FC29B50E2D0C6D55004BECE7 /* MarketDataService.swift in Sources */,
 				FC5CAF8C2C43D1F40029AB49 /* CoinImageViewModel.swift in Sources */,
 				FC29B5062D0B37DB004BECE7 /* StatisticModel.swift in Sources */,
 				FCC8FD352C3805260076CA1C /* AnimateCircleView.swift in Sources */,

@@ -22,7 +22,7 @@ final class HomeViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     
-    private let dataService = CoinDataService() //сервис получения монет
+    private let coinDataService = CoinDataService() //сервис получения монет
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -35,7 +35,7 @@ final class HomeViewModel: ObservableObject {
     
     ///создается подписка на полученные монеты из API и обновляет локальную allCoins
     private func addSubscibers() {
-//        dataService.$allCoins
+//        coinDataService.$allCoins
 //        //подписываемся на @Published var allCoins
 //            .sink { [weak self] coins in
 //                self?.allCoins = coins
@@ -44,7 +44,7 @@ final class HomeViewModel: ObservableObject {
         
         $searchText
         //объединяем с подпиской на dataService.$allCoins для использования двух значений searchText и [Coin] для фильтрации
-            .combineLatest(dataService.$allCoins)
+            .combineLatest(coinDataService.$allCoins)
         //сделаем задержку, чтобы функция фильтрации не запускалась сразу же после ввода
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
         //преобразуем вводимый текст в массив результата поиска
@@ -67,7 +67,7 @@ final class HomeViewModel: ObservableObject {
             .sink { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
             }
-        //сохраним Publisher
+        //сохраняем подписку
             .store(in: &cancellables)
     }
 }
