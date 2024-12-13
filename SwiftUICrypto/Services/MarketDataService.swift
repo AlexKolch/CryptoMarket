@@ -10,7 +10,7 @@ import Combine
 
 final class MarketDataService {
     
-    @Published var marketData: MarketDataModel? = nil
+    @Published var marketData: MarketDataModel? = nil //сюда придут данные из API
     
     var marketDataSubscription: AnyCancellable?
     

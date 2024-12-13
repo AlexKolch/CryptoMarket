@@ -10,19 +10,17 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var statistics = [
-    StatisticModel(title: "Title", value: "Value", percentageChange: 1),
-    StatisticModel(title: "Title", value: "Value"),
-    StatisticModel(title: "Title", value: "Value"),
-    StatisticModel(title: "Title", value: "Value", percentageChange: -1),
-    ]
+    @Published var statistics: [StatisticModel] = []
+    
     
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     
     @Published var searchText: String = ""
     
-    private let coinDataService = CoinDataService() //сервис получения монет
+    private let coinDataService = CoinDataService() //сервис получения данных о монетах
+    private let marketDataService = MarketDataService() //сервис получения данных капитализации
+    
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -68,6 +66,26 @@ final class HomeViewModel: ObservableObject {
                 self?.allCoins = returnedCoins
             }
         //сохраняем подписку
+            .store(in: &cancellables)
+        
+        marketDataService.$marketData
+            .map { marketDataModel -> [StatisticModel] in
+            //т.к. наша StatisticView работает с StatisticModel, преобразуем полученную MarketDataModel в нужную модель
+                var stats = [StatisticModel]()
+                
+                guard let data = marketDataModel else { return stats }
+                
+                let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
+                let volume = StatisticModel(title: "24h Volume", value: data.volume)
+                let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcMarketCap)
+                let portfolio = StatisticModel(title: "Portfolio Value", value: "0.00", percentageChange: 0.0)
+                
+                stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
+                return stats
+            }
+            .sink { [weak self] returnedStatsArray in
+                self?.statistics = returnedStatsArray
+            }
             .store(in: &cancellables)
     }
 }

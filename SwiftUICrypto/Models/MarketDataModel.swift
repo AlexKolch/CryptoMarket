@@ -166,7 +166,7 @@ import Foundation
  */
 
 struct GlobalData: Decodable {
-    let date: MarketDataModel
+    let date: MarketDataModel?
 }
 
 // MARK: - DateClass
@@ -184,7 +184,7 @@ struct MarketDataModel: Decodable {
     }
     
     //Достаем из словаря значение usd
-    var marketCapUSD: String {
+    var marketCap: String {
         let value: String
         if let item = totalMarketCap.first(where: { key, value in
             key == "usd"
@@ -207,6 +207,7 @@ struct MarketDataModel: Decodable {
         return value
     }
     
+    ///процентное соотношение btc к остальным монетам
     var btcMarketCap: String {
         if let item = marketCapPercentage.first(where: { $0.key == "btc"}) {
             return item.value.asPercentString()
