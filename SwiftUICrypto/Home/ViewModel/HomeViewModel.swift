@@ -12,7 +12,6 @@ final class HomeViewModel: ObservableObject {
     
     @Published var statistics: [StatisticModel] = []
     
-    
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     
@@ -40,6 +39,7 @@ final class HomeViewModel: ObservableObject {
 //            }
 //            .store(in: &cancellables) //Эта подписка больше не нужна, т к используем combineLatest ниже
         
+        //updates allCoins
         $searchText
         //объединяем с подпиской на dataService.$allCoins для использования двух значений searchText и [Coin] для фильтрации
             .combineLatest(coinDataService.$allCoins)
@@ -68,13 +68,14 @@ final class HomeViewModel: ObservableObject {
         //сохраняем подписку
             .store(in: &cancellables)
         
+        // updates marketData
         marketDataService.$marketData
             .map { marketDataModel -> [StatisticModel] in
             //т.к. наша StatisticView работает с StatisticModel, преобразуем полученную MarketDataModel в нужную модель
                 var stats = [StatisticModel]()
                 
                 guard let data = marketDataModel else { return stats }
-                
+    
                 let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
                 let volume = StatisticModel(title: "24h Volume", value: data.volume)
                 let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcMarketCap)

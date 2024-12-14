@@ -13,7 +13,7 @@ import Foundation
  
  JSON response:
  {
-   "date": {
+   "data": {
      "active_cryptocurrencies": 13690,
      "upcoming_icos": 0,
      "ongoing_icos": 49,
@@ -166,7 +166,7 @@ import Foundation
  */
 
 struct GlobalData: Decodable {
-    let date: MarketDataModel?
+    let data: MarketDataModel?
 }
 
 // MARK: - DateClass
@@ -189,7 +189,7 @@ struct MarketDataModel: Decodable {
         if let item = totalMarketCap.first(where: { key, value in
             key == "usd"
         }) {
-            value = String(describing: item.value)
+            value = "$" + item.value.formattedWithAbbreviations()
         } else {
             value = ""
         }
@@ -200,7 +200,7 @@ struct MarketDataModel: Decodable {
         let value: String
         ///способ короче
         if let item = totalVolume.first(where: { $0.key == "usd" }) {
-            value = String(describing: item.value)
+            value = "$" + item.value.formattedWithAbbreviations()
         } else {
             value = ""
         }

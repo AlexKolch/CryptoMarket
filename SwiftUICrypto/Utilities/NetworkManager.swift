@@ -32,7 +32,10 @@ final class NetworkManager {
                        response.statusCode >= 200 && response.statusCode < 300 else {
                      throw NetworkingError.badURLResponse(url: url)
                  }
-                 
+                 /*
+                 print(response.statusCode)
+                 print(String(data: result.data, encoding: .utf8) ?? "No data")
+                 */
                  return result.data
              }
              .receive(on: DispatchQueue.main) //при получении переходим в main
