@@ -117,6 +117,7 @@ private extension Cover {
         )
         .overlay(alignment: .center) {
             Image(systemName: "checkmark").opacity(showCheckmark ? 1.0 : 0.0)
+                .foregroundStyle(.accent)
         }
     }
     

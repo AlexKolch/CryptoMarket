@@ -12,6 +12,12 @@ struct SwiftUICryptoApp: App {
     
     @StateObject private var vm = HomeViewModel() //общий источник данных для всех дочерних вью
     
+    //Override navBar's color appearance
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(.accent)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(.accent)]
+    }
+    
     var body: some Scene {
         WindowGroup {
             if #available(iOS 16.0, *) {
