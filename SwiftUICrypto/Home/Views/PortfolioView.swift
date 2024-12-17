@@ -19,36 +19,43 @@ struct PortfolioView: View {
              Cover()
             }
         }
-        
     }
+    
 }
 
 struct Cover: View {
     
     @EnvironmentObject private var vm: HomeViewModel
     @State private var selectedCoin: CoinModel? = nil
+    @State private var inputAmount: String = ""
+    @State private var showCheckmark: Bool = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 SearchBarView(searchText: $vm.searchText)
-               coinLogoList
-              
+                coinLogoList
+                
+                if selectedCoin != nil {
+                  portfolioInputSection
+                }
             }
         }
         .navigationTitle("Edit Portfolio")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-               XMarkButton()
-
+                XMarkButton()
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                 saveButton
             }
         }
     }
-    
 }
 
-extension Cover {
-    private var coinLogoList: some View {
+private extension Cover {
+    
+     var coinLogoList: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
                 ForEach(vm.allCoins) { coin in
@@ -70,6 +77,88 @@ extension Cover {
             .offset(x: 8)
             .padding(.vertical, 4)
         }
+    }
+    
+    var portfolioInputSection: some View {
+        VStack(spacing: 20.0) {
+            HStack {
+                Text("Current price of \(selectedCoin?.symbol.uppercased() ?? ""):")
+                Spacer()
+                Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
+            }
+            Divider()
+            HStack {
+                Text("Amount holding:")
+                Spacer()
+                TextField("Ex: 1.4", text: $inputAmount)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
+            }
+            Divider()
+            HStack {
+                Text("Current value:")
+                Spacer()
+                Text(getCurrentValue().asCurrencyWith2Decimals())
+            }
+        }
+        .animation(.none, value: selectedCoin)
+        .padding()
+        .font(.headline)
+    }
+    
+    ///toolbar Btn
+    var saveButton: some View {
+        Button("Save".uppercased()) {
+            saveButtonPressed()
+        }
+        .font(.headline)
+        .opacity((selectedCoin != nil && selectedCoin?.currentCountHoldings != Double(inputAmount)) ?
+                 1.0 : 0.0
+        )
+        .overlay(alignment: .center) {
+            Image(systemName: "checkmark").opacity(showCheckmark ? 1.0 : 0.0)
+        }
+    }
+    
+    func getCurrentValue() -> Double {
+        let value: Double
+        if let quantity = Double(inputAmount) {
+            value = (selectedCoin?.currentPrice ?? 0) * quantity
+        } else {
+            value = 0
+        }
+        return value
+    }
+    
+    func saveButtonPressed() {
+        guard let selectedCoin else { return }
+        /*
+         here will be code save to portfolio
+         */
+        
+        //show checkmark
+        withAnimation(.easeIn) {
+            removeSelectedCoin()
+            withAnimation(.easeIn.delay(0.8)) {
+                showCheckmark = true
+            }
+        }
+        
+        // hide keyboard
+        UIApplication.shared.endEditing()
+        
+        // hide checkmark
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            withAnimation(.easeOut) {
+                showCheckmark = false
+            }
+        }
+    }
+    
+    func removeSelectedCoin() {
+        selectedCoin = nil
+        vm.searchText = ""
+        inputAmount = ""
     }
 }
 

@@ -47,7 +47,11 @@ URL: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250
 }
  */
 
-struct CoinModel: Identifiable, Decodable {
+struct CoinModel: Identifiable, Decodable, Equatable {
+    static func == (lhs: CoinModel, rhs: CoinModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: String
     let name: String
     let symbol: String
