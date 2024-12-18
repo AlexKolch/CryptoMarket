@@ -50,6 +50,17 @@ struct Cover: View {
                  saveButton
             }
         }
+        .onChange(of: vm.searchText, perform: { value in
+            if value == "" {
+                removeSelectedCoin()
+            }
+        })
+        // for ios 17 or newer
+//        .onChange(of: vm.searchText) { _, newValue in
+//            if newValue == "" {
+//                removeSelectedCoin()
+//            }
+//        }
     }
 }
 
