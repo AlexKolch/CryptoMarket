@@ -13,7 +13,7 @@ final class HomeViewModel: ObservableObject {
     @Published var statistics: [StatisticModel] = []
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
-    
+    @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     
     private let coinDataService = CoinDataService() //сервис получения данных о монетах
@@ -81,6 +81,7 @@ final class HomeViewModel: ObservableObject {
             .map(mapGlobalMarketData)
             .sink { [weak self] returnedStatsArray in
                 self?.statistics = returnedStatsArray
+                self?.isLoading = false
             }
             .store(in: &cancellables)
         
@@ -90,6 +91,12 @@ final class HomeViewModel: ObservableObject {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
     
+    func reloadData() {
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getData()
+        HapticManager.notify(type: .success) //устройство должно отдавать вибрацию
+    }
 }
 
 private extension HomeViewModel {
@@ -125,7 +132,7 @@ private extension HomeViewModel {
         portfolioCoins
             .map { coin -> Double in
                 let currentValue = coin.currentCostHoldings
-                let percentChange = coin.priceChangePercentage24H ?? 0 / 100 //????
+                let percentChange = (coin.priceChangePercentage24H ?? 0 / 100) / 100
                 let previousValue = currentValue / (1 + percentChange) //получаем стоимость каждой монеты 24H назад
                 return previousValue      //110 / (1 + 10%) = 100
             }

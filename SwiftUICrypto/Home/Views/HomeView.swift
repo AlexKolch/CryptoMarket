@@ -96,6 +96,14 @@ private extension HomeView {
                 Text("Holdings")
             }
             Text("Price").frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            Button {
+                withAnimation(.linear(duration: 2.0)) {
+                    vm.reloadData()
+                }
+            } label: {
+                Image(systemName: "goforward")
+            }
+            .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
         }
         .font(.caption)
         .foregroundStyle(.secondaryText)
@@ -110,6 +118,9 @@ private extension HomeView {
             }
         }
         .listStyle(.plain)
+        .refreshable {
+            vm.reloadData()
+        }
     }
     
     var portfolioCoinsList: some View {

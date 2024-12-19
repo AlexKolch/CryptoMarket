@@ -184,27 +184,6 @@
 		<dict>
 			<key>destination</key>
 			<dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>SwiftUICrypto/Home/ViewModel/HomeViewModel.swift</string>
-					</dict>
-				</dict>
-				<key>type</key>
-				<string>DVTDocumentLocation</string>
-			</dict>
-			<key>title</key>
-			<string>Стоимости всего актива</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
@@ -245,6 +224,52 @@
 			</dict>
 			<key>title</key>
 			<string>Magic func combine Publishers and Subscribers</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>27</string>
+					<key>EndingLineNumber</key>
+					<string>124</string>
+					<key>StartingColumnNumber</key>
+					<string>7</string>
+					<key>StartingLineNumber</key>
+					<string>124</string>
+					<key>Timestamp</key>
+					<string>756310780.77297</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SwiftUICrypto/Home/ViewModel/HomeViewModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string> let porfolioValue =</string>
+				<key>leading</key>
+				<string>        
+        //Расчет стоимости портфеля
+       </string>
+				<key>trailing</key>
+				<string>
+        portfolioCoins
+            .map({ $0.currentCostHoldings }) //получили массив значений стоимости каждой монеты
+</string>
+			</dict>
+			<key>title</key>
+			<string>Стоимости всего актива</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

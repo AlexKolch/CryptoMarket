@@ -21,6 +21,7 @@
 		FC29B5182D12DD2A004BECE7 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5162D12DD29004BECE7 /* PortfolioContainer.xcdatamodeld */; };
 		FC29B51A2D12DE94004BECE7 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5192D12DE94004BECE7 /* PortfolioDataService.swift */; };
 		FC29B5262D12F3E0004BECE7 /* PortfolioEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5242D12F3E0004BECE7 /* PortfolioEntity+CoreDataProperties.swift */; };
+		FC29B5282D145241004BECE7 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29B5272D145241004BECE7 /* HapticManager.swift */; };
 		FC5CAF852C3E70D50029AB49 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF842C3E70D50029AB49 /* NetworkManager.swift */; };
 		FC5CAF872C42E4F30029AB49 /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF862C42E4F30029AB49 /* CoinImageView.swift */; };
 		FC5CAF892C42FE950029AB49 /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF882C42FE950029AB49 /* CoinImageService.swift */; };
@@ -54,6 +55,7 @@
 		FC29B5172D12DD2A004BECE7 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		FC29B5192D12DE94004BECE7 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
 		FC29B5242D12F3E0004BECE7 /* PortfolioEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PortfolioEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FC29B5272D145241004BECE7 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		FC5CAF842C3E70D50029AB49 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FC5CAF862C42E4F30029AB49 /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
 		FC5CAF882C42FE950029AB49 /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				FC5CAF842C3E70D50029AB49 /* NetworkManager.swift */,
 				FC0BB7B82CAAA26700F40279 /* LocalFileManager.swift */,
+				FC29B5272D145241004BECE7 /* HapticManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				FC29B50E2D0C6D55004BECE7 /* MarketDataService.swift in Sources */,
 				FC29B5262D12F3E0004BECE7 /* PortfolioEntity+CoreDataProperties.swift in Sources */,
 				FC5CAF8C2C43D1F40029AB49 /* CoinImageViewModel.swift in Sources */,
+				FC29B5282D145241004BECE7 /* HapticManager.swift in Sources */,
 				FC29B5182D12DD2A004BECE7 /* PortfolioContainer.xcdatamodeld in Sources */,
 				FC29B5062D0B37DB004BECE7 /* StatisticModel.swift in Sources */,
 				FCC8FD352C3805260076CA1C /* AnimateCircleView.swift in Sources */,
