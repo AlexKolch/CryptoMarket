@@ -11,7 +11,6 @@ import Combine
 final class HomeViewModel: ObservableObject {
     
     @Published var statistics: [StatisticModel] = []
-    
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     
@@ -19,7 +18,7 @@ final class HomeViewModel: ObservableObject {
     
     private let coinDataService = CoinDataService() //сервис получения данных о монетах
     private let marketDataService = MarketDataService() //сервис получения данных капитализации
-    
+    private let portfolioDataService = PortfolioDataService() //сервис загрузки данных из CoreData
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -32,12 +31,12 @@ final class HomeViewModel: ObservableObject {
     
     ///создается подписка на полученные монеты из API и обновляет локальную allCoins
     private func addSubscibers() {
-//        coinDataService.$allCoins
-//        //подписываемся на @Published var allCoins
-//            .sink { [weak self] coins in
-//                self?.allCoins = coins
-//            }
-//            .store(in: &cancellables) //Эта подписка больше не нужна, т к используем combineLatest ниже
+        //        coinDataService.$allCoins
+        //        //подписываемся на @Published var allCoins
+        //            .sink { [weak self] coins in
+        //                self?.allCoins = coins
+        //            }
+        //            .store(in: &cancellables) //Эта подписка больше не нужна, т к используем combineLatest ниже
         
         //updates allCoins
         $searchText
@@ -57,7 +56,6 @@ final class HomeViewModel: ObservableObject {
                 let filteredCoins = allCoins.filter { coin in
                     //проверим есть ли такие названия в имени, символе или id
                     coin.name.lowercased().contains(searchingLowercasedText) || coin.symbol.lowercased().contains(searchingLowercasedText) || coin.id.lowercased().contains(searchingLowercasedText)
-//                    coin.name.lowercased().contains(lowercasedText)
                 }
                 return filteredCoins
             }
@@ -68,14 +66,14 @@ final class HomeViewModel: ObservableObject {
         //сохраняем подписку
             .store(in: &cancellables)
         
-        // updates marketData
+        // updates @Published var statistics. Our marketData
         marketDataService.$marketData
             .map { marketDataModel -> [StatisticModel] in
-            //т.к. наша StatisticView работает с StatisticModel, преобразуем полученную MarketDataModel в нужную модель
+                //т.к. наша StatisticView работает с StatisticModel, преобразуем полученную MarketDataModel в нужную модель
                 var stats = [StatisticModel]()
                 
                 guard let data = marketDataModel else { return stats }
-    
+                
                 let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
                 let volume = StatisticModel(title: "24h Volume", value: data.volume)
                 let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcMarketCap)
@@ -88,5 +86,27 @@ final class HomeViewModel: ObservableObject {
                 self?.statistics = returnedStatsArray
             }
             .store(in: &cancellables)
+        
+        // updates @Published var portfolioCoins
+        $allCoins
+            .combineLatest(portfolioDataService.$savedEntities)
+            .map { (coinModels, portfolioEntities) -> [CoinModel] in
+                // проверим есть ли в массиве allCoins монеты которые есть и в массиве savedEntities
+                coinModels
+                    .compactMap { coin -> CoinModel? in
+                        //нам нужны монеты которые есть в портфеле(savedEntities), поэтому вернем nil если такой монеты нет и удалим из итогового массива
+                        guard let entity = portfolioEntities.first(where: { $0.coinID == coin.id }) else { return nil }
+                        return coin.updateHoldings(amount: entity.amount) //возвращаем монету типа CoinModel id которой есть в массиве [PortfolioEntity], при этом обновляя ее текущее кол-во в портфеле
+                    }
+            }
+            .sink { [weak self] coinsPortfolio in
+                self?.portfolioCoins = coinsPortfolio
+            }
+            .store(in: &cancellables)
     }
+    
+    func updatePortfolio(coin: CoinModel, amount: Double) {
+        portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+    }
+    
 }

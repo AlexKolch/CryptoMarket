@@ -69,13 +69,15 @@ private extension Cover {
      var coinLogoList: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.allCoins) { coin in
+                ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(.vertical, 6)
                         .onTapGesture {
                             withAnimation(.easeIn) {
-                                selectedCoin = coin //при нажатии на монету присваиваем ее в переменную состояния
+                                //определяем нажатую монету в списке
+//                                selectedCoin = coin
+                                updatedAmountHolding(at: coin)
                             }
                         }
                         .background {
@@ -142,11 +144,26 @@ private extension Cover {
         return value
     }
     
+    ///Обновить значение inputAmount исходя из имеющегося кол-ва монет
+    func updatedAmountHolding(at coin: CoinModel) {
+        selectedCoin = coin
+        //проверяем что монета есть в портфеле и если находим такие достаем их кол-во
+        if let portfolioCoins = vm.portfolioCoins.first(where: { $0.id == coin.id }),
+           let amount = portfolioCoins.currentCountHoldings {
+            inputAmount = "\(amount)"
+        } else {
+            inputAmount = "" //если нету монеты то присвоим пустую строку
+        }
+    }
+    
     func saveButtonPressed() {
-        guard let selectedCoin else { return }
-        /*
-         here will be code save to portfolio
-         */
+        guard
+            let coin = selectedCoin,
+            let amount = Double(inputAmount)
+        else { return } //получили данные о выбранной монете
+        
+        //update portfolio to CoreData
+        vm.updatePortfolio(coin: coin, amount: amount)
         
         //show checkmark
         withAnimation(.easeIn) {
