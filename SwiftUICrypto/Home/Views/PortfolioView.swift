@@ -76,7 +76,7 @@ private extension Cover {
                         .onTapGesture {
                             withAnimation(.easeIn) {
                                 //определяем нажатую монету в списке
-//                                selectedCoin = coin
+//                                selectedCoin = coin 
                                 updatedAmountHolding(at: coin)
                             }
                         }

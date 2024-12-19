@@ -29,7 +29,7 @@ final class HomeViewModel: ObservableObject {
         addSubscibers()
     }
     
-    ///создается подписка на полученные монеты из API и обновляет локальную allCoins
+    ///создаются подписки на полученные монеты из API
     private func addSubscibers() {
         //        coinDataService.$allCoins
         //        //подписываемся на @Published var allCoins
@@ -38,7 +38,7 @@ final class HomeViewModel: ObservableObject {
         //            }
         //            .store(in: &cancellables) //Эта подписка больше не нужна, т к используем combineLatest ниже
         
-        //updates allCoins
+        //MARK: - sink updates allCoins
         $searchText
         //объединяем с подпиской на dataService.$allCoins для использования двух значений searchText и [Coin] для фильтрации
             .combineLatest(coinDataService.$allCoins)
@@ -66,47 +66,77 @@ final class HomeViewModel: ObservableObject {
         //сохраняем подписку
             .store(in: &cancellables)
         
-        // updates @Published var statistics. Our marketData
-        marketDataService.$marketData
-            .map { marketDataModel -> [StatisticModel] in
-                //т.к. наша StatisticView работает с StatisticModel, преобразуем полученную MarketDataModel в нужную модель
-                var stats = [StatisticModel]()
-                
-                guard let data = marketDataModel else { return stats }
-                
-                let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
-                let volume = StatisticModel(title: "24h Volume", value: data.volume)
-                let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcMarketCap)
-                let portfolio = StatisticModel(title: "Portfolio Value", value: "0.00", percentageChange: 0.0)
-                
-                stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
-                return stats
+        // MARK: - sink updates portfolioCoins
+        $allCoins
+            .combineLatest(portfolioDataService.$savedEntities)
+            .map(mapAllCoinsToPortfolioCoins)
+            .sink { [weak self] coinsPortfolio in
+                self?.portfolioCoins = coinsPortfolio
             }
+            .store(in: &cancellables)
+        
+        //MARK: - sink updates statistics
+        marketDataService.$marketData
+            .combineLatest($portfolioCoins)
+            .map(mapGlobalMarketData)
             .sink { [weak self] returnedStatsArray in
                 self?.statistics = returnedStatsArray
             }
             .store(in: &cancellables)
         
-        // updates @Published var portfolioCoins
-        $allCoins
-            .combineLatest(portfolioDataService.$savedEntities)
-            .map { (coinModels, portfolioEntities) -> [CoinModel] in
-                // проверим есть ли в массиве allCoins монеты которые есть и в массиве savedEntities
-                coinModels
-                    .compactMap { coin -> CoinModel? in
-                        //нам нужны монеты которые есть в портфеле(savedEntities), поэтому вернем nil если такой монеты нет и удалим из итогового массива
-                        guard let entity = portfolioEntities.first(where: { $0.coinID == coin.id }) else { return nil }
-                        return coin.updateHoldings(amount: entity.amount) //возвращаем монету типа CoinModel id которой есть в массиве [PortfolioEntity], при этом обновляя ее текущее кол-во в портфеле
-                    }
-            }
-            .sink { [weak self] coinsPortfolio in
-                self?.portfolioCoins = coinsPortfolio
-            }
-            .store(in: &cancellables)
     }
     
     func updatePortfolio(coin: CoinModel, amount: Double) {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
     
+}
+
+private extension HomeViewModel {
+    
+    func mapAllCoinsToPortfolioCoins(allCoins: [CoinModel], portfolioEntities: [PortfolioEntity]) -> [CoinModel] {
+        // проверим есть ли в массиве allCoins монеты которые есть и в массиве savedEntities
+        allCoins
+            .compactMap { coin -> CoinModel? in
+                //нам нужны монеты которые есть в портфеле(savedEntities), поэтому вернем nil если такой монеты нет и удалим из итогового массива
+                guard let entity = portfolioEntities.first(where: { $0.coinID == coin.id }) else { return nil }
+                return coin.updateHoldings(amount: entity.amount) //возвращаем монету типа CoinModel id которой есть в массиве [PortfolioEntity], при этом обновляя ее текущее кол-во в портфеле
+            }
+    }
+    
+    func mapGlobalMarketData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
+        //т.к. наша StatisticView работает с StatisticModel, преобразуем полученную MarketDataModel в нужную модель
+        var stats = [StatisticModel]()
+        
+        guard let data = marketDataModel else { return stats }
+        
+        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
+        let volume = StatisticModel(title: "24h Volume", value: data.volume)
+        let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcMarketCap)
+        
+        //Расчет стоимости портфеля
+        let porfolioValue =
+        portfolioCoins
+            .map({ $0.currentCostHoldings }) //получили массив значений стоимости каждой монеты
+            .reduce(0, +) //получили сумму стоимости всего актива
+        
+        //Расчет предыдущей стоимости портфеля 24Н назад
+        let previousValue =
+        portfolioCoins
+            .map { coin -> Double in
+                let currentValue = coin.currentCostHoldings
+                let percentChange = coin.priceChangePercentage24H ?? 0 / 100 //????
+                let previousValue = currentValue / (1 + percentChange) //получаем стоимость каждой монеты 24H назад
+                return previousValue      //110 / (1 + 10%) = 100
+            }
+            .reduce(0, +)
+        
+        //Расчет изменения стоимости портфеля в %. ((Новое значение - старое значение) / старое значение) * 100
+        let percentageChange = ((porfolioValue - previousValue) / previousValue) * 100
+        
+        let portfolio = StatisticModel(title: "Portfolio Value", value: porfolioValue.asCurrencyWith2Decimals(), percentageChange: percentageChange)
+        
+        stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
+        return stats
+    }
 }
