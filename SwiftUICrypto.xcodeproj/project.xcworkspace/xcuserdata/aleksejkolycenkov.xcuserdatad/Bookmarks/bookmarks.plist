@@ -187,15 +187,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>34</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>32</string>
+					<string>39</string>
 					<key>StartingColumnNumber</key>
-					<string>3</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>32</string>
+					<string>38</string>
 					<key>Timestamp</key>
-					<string>756301722.11549</string>
+					<string>756387089.1175179</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -211,15 +211,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string> private func addSubscibers() {</string>
+				<string>    private func addSubscibers() {
+</string>
 				<key>leading</key>
 				<string>    
     ///создаются подписки на полученные монеты из API
-   </string>
+</string>
 				<key>trailing</key>
-				<string>
-        //        coinDataService.$allCoins
+				<string>        //        coinDataService.$allCoins
         //        //подписываемся на @Published var allCoins
+        //            .sink { [weak self] coins in
 </string>
 			</dict>
 			<key>title</key>
@@ -233,15 +234,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>27</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>124</string>
+					<string>136</string>
 					<key>StartingColumnNumber</key>
-					<string>7</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>124</string>
+					<string>135</string>
 					<key>Timestamp</key>
-					<string>756310780.77297</string>
+					<string>756392185.060764</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -257,15 +258,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string> let porfolioValue =</string>
+				<string>        let porfolioValue =
+</string>
 				<key>leading</key>
 				<string>        
         //Расчет стоимости портфеля
-       </string>
+</string>
 				<key>trailing</key>
-				<string>
-        portfolioCoins
+				<string>        portfolioCoins
             .map({ $0.currentCostHoldings }) //получили массив значений стоимости каждой монеты
+            .reduce(0, +) //получили сумму стоимости всего актива
 </string>
 			</dict>
 			<key>title</key>

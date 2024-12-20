@@ -15,11 +15,17 @@ final class HomeViewModel: ObservableObject {
     @Published var portfolioCoins: [CoinModel] = []
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
+    @Published var sortOption: SortOption = .holdings
     
     private let coinDataService = CoinDataService() //сервис получения данных о монетах
     private let marketDataService = MarketDataService() //сервис получения данных капитализации
     private let portfolioDataService = PortfolioDataService() //сервис загрузки данных из CoreData
     private var cancellables = Set<AnyCancellable>()
+    
+    ///параметры сортировки
+    enum SortOption {
+        case rank, rankReversed, holdings, holdingsReversed, price, priceReversed
+    }
     
     init() {
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -40,12 +46,12 @@ final class HomeViewModel: ObservableObject {
         
         //MARK: - sink updates allCoins
         $searchText
-        //объединяем с подпиской на dataService.$allCoins для использования двух значений searchText и [Coin] для фильтрации
-            .combineLatest(coinDataService.$allCoins)
+        //объединяем с подпиской на dataService.$allCoins для использования двух значений searchText и [Coin] для фильтрации, и третьей подпиской для сортировки
+            .combineLatest(coinDataService.$allCoins, $sortOption)
         //сделаем задержку, чтобы функция фильтрации не запускалась сразу же после ввода
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
         //преобразуем вводимый текст в массив результата поиска
-            .map { (inputText, allCoins) -> [CoinModel] in //после combineLatest мы имеем в параметрах вводимый текст и массив монет
+            .map { (inputText, allCoins, sort) -> [CoinModel] in //после combineLatest мы имеем в параметрах вводимый текст и массив монет
                 //если searchBar пустой, то возвращаем все монеты
                 guard !inputText.isEmpty else {
                     return allCoins
@@ -53,11 +59,15 @@ final class HomeViewModel: ObservableObject {
                 
                 //идет поиск/фильтрация в searchBar
                 let searchingLowercasedText = inputText.lowercased() //преобразуем в нижний регистр для верной фильтрации
-                let filteredCoins = allCoins.filter { coin in
+                var receivedCoins = allCoins.filter { coin in
                     //проверим есть ли такие названия в имени, символе или id
                     coin.name.lowercased().contains(searchingLowercasedText) || coin.symbol.lowercased().contains(searchingLowercasedText) || coin.id.lowercased().contains(searchingLowercasedText)
                 }
-                return filteredCoins
+              
+//                return filteredCoins
+                //Логика Сортировки монет в листе
+                self.sortCoins(sort: sort, coins: &receivedCoins)
+                return receivedCoins
             }
         //синхронизируем массив allCoins с отфильтрованными монетами
             .sink { [weak self] returnedCoins in
@@ -71,7 +81,8 @@ final class HomeViewModel: ObservableObject {
             .combineLatest(portfolioDataService.$savedEntities)
             .map(mapAllCoinsToPortfolioCoins)
             .sink { [weak self] coinsPortfolio in
-                self?.portfolioCoins = coinsPortfolio
+                guard let self else { return }
+                self.portfolioCoins = self.sortPortfolioCoinsIfNeeded(coins: coinsPortfolio)
             }
             .store(in: &cancellables)
         
@@ -145,5 +156,31 @@ private extension HomeViewModel {
         
         stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
         return stats
+    }
+    
+    //работаем с сущ массивом через inout для лучшей скорости
+    func sortCoins(sort: SortOption, coins: inout [CoinModel]) {
+        switch sort {
+        case .rank, .holdings:
+            return coins.sort(by: { $0.rank < $1.rank })
+        case .rankReversed, .holdingsReversed:
+            return coins.sort(by: { $0.rank > $1.rank })
+        case .price:
+            return coins.sort(by: { $0.currentPrice > $1.currentPrice })
+        case .priceReversed:
+            return coins.sort(by: { $0.currentPrice < $1.currentPrice })
+        }
+    }
+    
+    func sortPortfolioCoinsIfNeeded(coins: [CoinModel]) -> [CoinModel] {
+        //will only sort by holdings or revHold if needed
+        switch sortOption {
+        case .holdings:
+            return coins.sorted(by: { $0.currentCostHoldings > $1.currentCostHoldings })
+        case .holdingsReversed:
+            return coins.sorted(by: { $0.currentCostHoldings < $1.currentCostHoldings })
+        default:
+            return coins
+        }
     }
 }
