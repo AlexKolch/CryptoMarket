@@ -37,44 +37,22 @@ final class HomeViewModel: ObservableObject {
     
     ///создаются подписки на полученные монеты из API
     private func addSubscibers() {
-        //        coinDataService.$allCoins
-        //        //подписываемся на @Published var allCoins
-        //            .sink { [weak self] coins in
-        //                self?.allCoins = coins
-        //            }
-        //            .store(in: &cancellables) //Эта подписка больше не нужна, т к используем combineLatest ниже
+//                coinDataService.$allCoins   //подписываемся на @Published var allCoins
+//                    .sink { [weak self] coins in
+//                        self?.allCoins = coins
+//                    }
+//                    .store(in: &cancellables) //Эта подписка больше не нужна, тк используем комбинированную combineLatest ниже
         
         //MARK: - sink updates allCoins
         $searchText
-        //объединяем с подпиской на dataService.$allCoins для использования двух значений searchText и [Coin] для фильтрации, и третьей подпиской для сортировки
-            .combineLatest(coinDataService.$allCoins, $sortOption)
-        //сделаем задержку, чтобы функция фильтрации не запускалась сразу же после ввода
-            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-        //преобразуем вводимый текст в массив результата поиска
-            .map { (inputText, allCoins, sort) -> [CoinModel] in //после combineLatest мы имеем в параметрах вводимый текст и массив монет
-                //если searchBar пустой, то возвращаем все монеты
-                guard !inputText.isEmpty else {
-                    return allCoins
-                }
-                
-                //идет поиск/фильтрация в searchBar
-                let searchingLowercasedText = inputText.lowercased() //преобразуем в нижний регистр для верной фильтрации
-                var receivedCoins = allCoins.filter { coin in
-                    //проверим есть ли такие названия в имени, символе или id
-                    coin.name.lowercased().contains(searchingLowercasedText) || coin.symbol.lowercased().contains(searchingLowercasedText) || coin.id.lowercased().contains(searchingLowercasedText)
-                }
-              
-//                return filteredCoins
-                //Логика Сортировки монет в листе
-                self.sortCoins(sort: sort, coins: &receivedCoins)
-                return receivedCoins
-            }
-        //синхронизируем массив allCoins с отфильтрованными монетами
+            .combineLatest(coinDataService.$allCoins, $sortOption) //объединяем с другими Published для наблюдения трех значений
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main) //делаем задержку map
+            .map(filterAndSortCoins) //фильтрует и сортирует
+        //подписываемся на полученные данные
             .sink { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
             }
-        //сохраняем подписку
-            .store(in: &cancellables)
+            .store(in: &cancellables) //сохраняем подписку
         
         // MARK: - sink updates portfolioCoins
         $allCoins
@@ -95,8 +73,8 @@ final class HomeViewModel: ObservableObject {
                 self?.isLoading = false
             }
             .store(in: &cancellables)
-        
     }
+    
     
     func updatePortfolio(coin: CoinModel, amount: Double) {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
@@ -156,6 +134,26 @@ private extension HomeViewModel {
         
         stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
         return stats
+    }
+    
+    func filterCoins(inputText: String, coins: [CoinModel]) -> [CoinModel] {
+        //если searchBar пустой, то возвращаем все монеты
+        guard !inputText.isEmpty else {
+            return coins
+        }
+        
+        //идет поиск/фильтрация в searchBar
+        let searchingLowercasedText = inputText.lowercased() //преобразуем в нижний регистр для верной фильтрации
+        return coins.filter { coin in
+            //проверим есть ли такие названия в имени, символе или id
+            coin.name.lowercased().contains(searchingLowercasedText) || coin.symbol.lowercased().contains(searchingLowercasedText) || coin.id.lowercased().contains(searchingLowercasedText)
+        }
+    }
+    
+    func filterAndSortCoins(inputText: String, coins: [CoinModel], sort: SortOption) -> [CoinModel] {
+        var filteredCoins = filterCoins(inputText: inputText, coins: coins)
+        sortCoins(sort: sort, coins: &filteredCoins)
+        return filteredCoins
     }
     
     //работаем с сущ массивом через inout для лучшей скорости

@@ -218,9 +218,9 @@
     ///создаются подписки на полученные монеты из API
 </string>
 				<key>trailing</key>
-				<string>        //        coinDataService.$allCoins
-        //        //подписываемся на @Published var allCoins
-        //            .sink { [weak self] coins in
+				<string>//                coinDataService.$allCoins   //подписываемся на @Published var allCoins
+//                    .sink { [weak self] coins in
+//                        self?.allCoins = coins
 </string>
 			</dict>
 			<key>title</key>
@@ -236,13 +236,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>136</string>
+					<string>114</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>135</string>
+					<string>113</string>
 					<key>Timestamp</key>
-					<string>756392185.060764</string>
+					<string>756398644.616744</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
