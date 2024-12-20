@@ -1,8 +1,10 @@
 # CryptoMarket
- Crypto market platform 
- Receive data about crypto market. Look for, sort, add, save, remove coins in your portfolio
+ Crypto market platform. 
+ 
+ Receive data about crypto market. Look for, sort, add, save, remove coins in your portfolio.
 
  Used in a project:
+ 
  The power combine publisher and subscriber and also sink for sync data in entire app
 * SwiftUI
 * Combine
