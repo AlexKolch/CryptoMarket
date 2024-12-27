@@ -15,13 +15,14 @@ struct CoinRowView: View {
     var body: some View {
         HStack(spacing: 0) {
             leftColumn
-            Spacer()
+            Spacer() //зона спейсера не является кликабельной
             if showHoldingsColumn {
                 centerColumn
             }
             rightColumn
         }
         .font(.subheadline)
+        .background(Color.myBackground) //чтобы вся ячейка была кликабельной, накладываем Color
     }
 }
 

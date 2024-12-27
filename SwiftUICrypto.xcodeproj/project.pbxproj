@@ -26,6 +26,7 @@
 		FC5CAF872C42E4F30029AB49 /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF862C42E4F30029AB49 /* CoinImageView.swift */; };
 		FC5CAF892C42FE950029AB49 /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF882C42FE950029AB49 /* CoinImageService.swift */; };
 		FC5CAF8C2C43D1F40029AB49 /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF8B2C43D1F40029AB49 /* CoinImageViewModel.swift */; };
+		FCA7C9A92D1EFFA0009A53C9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7C9A82D1EFFA0009A53C9 /* DetailView.swift */; };
 		FCC8FD302C37EF5F0076CA1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD2F2C37EF5F0076CA1C /* HomeView.swift */; };
 		FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD322C37F1ED0076CA1C /* CircleButtonView.swift */; };
 		FCC8FD352C3805260076CA1C /* AnimateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */; };
@@ -60,6 +61,7 @@
 		FC5CAF862C42E4F30029AB49 /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
 		FC5CAF882C42FE950029AB49 /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
 		FC5CAF8B2C43D1F40029AB49 /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
+		FCA7C9A82D1EFFA0009A53C9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		FCC8FD2F2C37EF5F0076CA1C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FCC8FD322C37F1ED0076CA1C /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateCircleView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,39 @@
 				FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */,
 			);
 			path = CircleButton;
+			sourceTree = "<group>";
+		};
+		FCA7C9A42D1EFF15009A53C9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FCA7C9A52D1EFF29009A53C9 /* DetailView */,
+				FCC8FD2C2C37EF050076CA1C /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		FCA7C9A52D1EFF29009A53C9 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				FCA7C9A72D1EFF42009A53C9 /* Views */,
+				FCA7C9A62D1EFF38009A53C9 /* ViewModel */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		FCA7C9A62D1EFF38009A53C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FCA7C9A72D1EFF42009A53C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCA7C9A82D1EFFA0009A53C9 /* DetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FCC8FD2C2C37EF050076CA1C /* Home */ = {
@@ -206,13 +241,13 @@
 		FCCCB1CD2C37D27A00370668 /* SwiftUICrypto */ = {
 			isa = PBXGroup;
 			children = (
+				FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */,
 				FC5CAF832C3E70AA0029AB49 /* Utilities */,
 				FCC8FD422C3D25290076CA1C /* Services */,
-				FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */,
 				FCC8FD3D2C3BFDFC0076CA1C /* Extensions */,
 				FCC8FD362C3810AA0076CA1C /* Models */,
 				FCC8FD312C37F1CA0076CA1C /* Components */,
-				FCC8FD2C2C37EF050076CA1C /* Home */,
+				FCA7C9A42D1EFF15009A53C9 /* Screens */,
 				FCCCB1DE2C37D8ED00370668 /* Assets.xcassets */,
 				FCCCB1D02C37D27A00370668 /* ContentView.swift */,
 				FCCCB1D42C37D27B00370668 /* Preview Content */,
@@ -311,6 +346,7 @@
 				FC5CAF872C42E4F30029AB49 /* CoinImageView.swift in Sources */,
 				FCC8FD3F2C3BFE150076CA1C /* Double + Ext..swift in Sources */,
 				FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */,
+				FCA7C9A92D1EFFA0009A53C9 /* DetailView.swift in Sources */,
 				FC29B5122D0EFB20004BECE7 /* XMarkButton.swift in Sources */,
 				FCCCB1CF2C37D27A00370668 /* SwiftUICryptoApp.swift in Sources */,
 				FC0BB7BD2CAADCCC00F40279 /* UIApplication.swift in Sources */,

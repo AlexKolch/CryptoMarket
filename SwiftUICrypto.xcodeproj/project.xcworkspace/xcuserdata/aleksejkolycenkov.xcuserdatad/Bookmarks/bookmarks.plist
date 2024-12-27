@@ -275,6 +275,52 @@
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>26</string>
+					<key>EndingLineNumber</key>
+					<string>51</string>
+					<key>StartingColumnNumber</key>
+					<string>11</string>
+					<key>StartingLineNumber</key>
+					<string>51</string>
+					<key>Timestamp</key>
+					<string>757020673.7648081</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SwiftUICrypto/Screens/Home/Views/HomeView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string> NavigationLink</string>
+				<key>leading</key>
+				<string>        .background {
+            //ссылка активируется при переключении @State isShowDetailView
+           </string>
+				<key>trailing</key>
+				<string>(
+                destination: LoadingDetailView(coin: $selectedCoin),
+                isActive: $isShowDetailView,
+</string>
+			</dict>
+			<key>title</key>
+			<string>ссылка на бэкграунде</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>
