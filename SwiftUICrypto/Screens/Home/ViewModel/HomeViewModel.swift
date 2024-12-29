@@ -45,7 +45,7 @@ final class HomeViewModel: ObservableObject {
         
         //MARK: - sink updates allCoins
         $searchText
-            .combineLatest(coinDataService.$allCoins, $sortOption) //объединяем с другими Published для наблюдения трех значений
+            .combineLatest(coinDataService.$allCoins, $sortOption) //подпишемся к другим Published для наблюдения трех значений
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main) //делаем задержку map
             .map(filterAndSortCoins) //фильтрует и сортирует
         //подписываемся на полученные данные

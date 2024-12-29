@@ -22,18 +22,71 @@ struct LoadingDetailView: View {
 
 struct DetailView: View {
     
-    @StateObject var vm: DetailViewModel
+    @StateObject private var vm: DetailViewModel
+    
+    private let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     init(coin: CoinModel) {
         _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
-        print("init DetailView \(coin.name)")
     }
     
     var body: some View {
-        Text("Hello")
+        ScrollView {
+            VStack(spacing: 20.0) {
+                Text("").frame(height: 150)
+                overviewTitle
+                Divider()
+                overviewGrid
+                
+                additionalTitle
+                Divider()
+                additionalGrid
+            }
+            .padding()
+        }
+        .navigationTitle(vm.coin.name)
+    }
+}
+
+extension DetailView {
+    private var overviewTitle: some View {
+        Text("Overview")
+            .font(.title)
+            .bold()
+            .foregroundStyle(.accent)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var additionalTitle: some View {
+        Text("Additional information")
+            .font(.title)
+            .bold()
+            .foregroundStyle(.accent)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var overviewGrid: some View {
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 30, content: {
+            ForEach(vm.overviewStats) { stat in
+                StatisticView(stats: stat)
+            }
+        })
+    }
+    
+    private var additionalGrid: some View {
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 30, content: {
+            ForEach(vm.additionalStats) { stat in
+                StatisticView(stats: stat)
+            }
+        })
     }
 }
 
 #Preview {
-    DetailView(coin: MocPreview.coin)
+    NavigationView {
+        DetailView(coin: MocPreview.coin)
+    }
 }
