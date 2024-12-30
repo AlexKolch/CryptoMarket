@@ -30,6 +30,8 @@
 		FCA7C9AB2D20056E009A53C9 /* DetailCoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7C9AA2D20056E009A53C9 /* DetailCoinModel.swift */; };
 		FCA7C9AD2D20258B009A53C9 /* CoinDetailsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7C9AC2D20258B009A53C9 /* CoinDetailsDataService.swift */; };
 		FCA7C9AF2D20280B009A53C9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7C9AE2D20280B009A53C9 /* DetailViewModel.swift */; };
+		FCA7C9B12D229966009A53C9 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7C9B02D229966009A53C9 /* ChartView.swift */; };
+		FCA7C9B32D22C0EA009A53C9 /* Date + Ext..swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7C9B22D22C0EA009A53C9 /* Date + Ext..swift */; };
 		FCC8FD302C37EF5F0076CA1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD2F2C37EF5F0076CA1C /* HomeView.swift */; };
 		FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD322C37F1ED0076CA1C /* CircleButtonView.swift */; };
 		FCC8FD352C3805260076CA1C /* AnimateCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */; };
@@ -68,6 +70,8 @@
 		FCA7C9AA2D20056E009A53C9 /* DetailCoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinModel.swift; sourceTree = "<group>"; };
 		FCA7C9AC2D20258B009A53C9 /* CoinDetailsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailsDataService.swift; sourceTree = "<group>"; };
 		FCA7C9AE2D20280B009A53C9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		FCA7C9B02D229966009A53C9 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		FCA7C9B22D22C0EA009A53C9 /* Date + Ext..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext..swift"; sourceTree = "<group>"; };
 		FCC8FD2F2C37EF5F0076CA1C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FCC8FD322C37F1ED0076CA1C /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		FCC8FD342C3805260076CA1C /* AnimateCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateCircleView.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA7C9A82D1EFFA0009A53C9 /* DetailView.swift */,
+				FCA7C9B02D229966009A53C9 /* ChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			children = (
 				FCC8FD3E2C3BFE150076CA1C /* Double + Ext..swift */,
 				FC0BB7BC2CAADCCC00F40279 /* UIApplication.swift */,
+				FCA7C9B22D22C0EA009A53C9 /* Date + Ext..swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */,
 				FC5CAF852C3E70D50029AB49 /* NetworkManager.swift in Sources */,
 				FC29B50C2D0C54EA004BECE7 /* MarketDataModel.swift in Sources */,
+				FCA7C9B32D22C0EA009A53C9 /* Date + Ext..swift in Sources */,
 				FC5CAF872C42E4F30029AB49 /* CoinImageView.swift in Sources */,
 				FCC8FD3F2C3BFE150076CA1C /* Double + Ext..swift in Sources */,
 				FCC8FD332C37F1ED0076CA1C /* CircleButtonView.swift in Sources */,
@@ -369,6 +376,7 @@
 				FC5CAF8C2C43D1F40029AB49 /* CoinImageViewModel.swift in Sources */,
 				FC29B5282D145241004BECE7 /* HapticManager.swift in Sources */,
 				FC29B5182D12DD2A004BECE7 /* PortfolioContainer.xcdatamodeld in Sources */,
+				FCA7C9B12D229966009A53C9 /* ChartView.swift in Sources */,
 				FCA7C9AB2D20056E009A53C9 /* DetailCoinModel.swift in Sources */,
 				FC29B5062D0B37DB004BECE7 /* StatisticModel.swift in Sources */,
 				FCA7C9AD2D20258B009A53C9 /* CoinDetailsDataService.swift in Sources */,
