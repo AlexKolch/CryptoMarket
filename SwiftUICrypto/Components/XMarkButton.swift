@@ -22,6 +22,7 @@ struct XMarkButton: View {
         } label: {
             Image(systemName: "xmark")
                 .font(.headline)
+                .tint(.accent)
         }
     }
 }

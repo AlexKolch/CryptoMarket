@@ -12,7 +12,7 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio = false //animate right
     @State private var showPortfolioView = false //display sheet
-    
+    @State private var showSettingsView = false
     @State private var selectedCoin: CoinModel? = nil
     @State private var isShowDetailView: Bool = false
     
@@ -25,11 +25,13 @@ struct HomeView: View {
                     PortfolioView()
                         .environmentObject(vm)
                 })
+                .sheet(isPresented: $showSettingsView, content: {
+                    SettingsView()
+                })
             
             ///content layer
             VStack {
                 homeHeader
-                
                 HeaderStatsView(showPortfolio: $showPortfolio)
                 SearchBarView(searchText: $vm.searchText)
                 
@@ -76,6 +78,8 @@ private extension HomeView {
                 .onTapGesture {
                     if showPortfolio {
                         showPortfolioView.toggle()
+                    } else {
+                        showSettingsView.toggle()
                     }
                 }
                 .background {
