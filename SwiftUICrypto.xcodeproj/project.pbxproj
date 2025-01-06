@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC0241352D2BDFF00098F593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0241342D2BDFF00098F593 /* LaunchScreen.storyboard */; };
+		FC0241372D2BECE50098F593 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0241362D2BECE50098F593 /* LaunchView.swift */; };
 		FC0BB7B92CAAA26700F40279 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB7B82CAAA26700F40279 /* LocalFileManager.swift */; };
 		FC0BB7BB2CAAC63F00F40279 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB7BA2CAAC63F00F40279 /* SearchBarView.swift */; };
 		FC0BB7BD2CAADCCC00F40279 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB7BC2CAADCCC00F40279 /* UIApplication.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		FC0241322D2BDED00098F593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC0241342D2BDFF00098F593 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC0241362D2BECE50098F593 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		FC0BB7B82CAAA26700F40279 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		FC0BB7BA2CAAC63F00F40279 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		FC0BB7BC2CAADCCC00F40279 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				FC0241342D2BDFF00098F593 /* LaunchScreen.storyboard */,
+				FC0241362D2BECE50098F593 /* LaunchView.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				FC0BB7B92CAAA26700F40279 /* LocalFileManager.swift in Sources */,
 				FCC8FD302C37EF5F0076CA1C /* HomeView.swift in Sources */,
 				FC80E75A2D2A94E5006E49E3 /* SettingsView.swift in Sources */,
+				FC0241372D2BECE50098F593 /* LaunchView.swift in Sources */,
 				FC0BB7BB2CAAC63F00F40279 /* SearchBarView.swift in Sources */,
 				FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */,
 				FC5CAF852C3E70D50029AB49 /* NetworkManager.swift in Sources */,

@@ -7,19 +7,6 @@
 		<dict>
 			<key>destination</key>
 			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>45</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>44</string>
-					<key>Timestamp</key>
-					<string>755720051.692178</string>
-				</dict>
 				<key>rebasable-url</key>
 				<dict>
 					<key>base</key>
@@ -27,27 +14,14 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>SwiftUICrypto/Home/Views/CoinRowView.swift</string>
+						<string>SwiftUICrypto/SwiftUICryptoApp.swift</string>
 					</dict>
 				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>            CoinImageView(coin: coin)
-</string>
-				<key>leading</key>
-				<string>                .foregroundStyle(.secondaryText)
-                .frame(minWidth: 30)
-</string>
-				<key>trailing</key>
-				<string>                .frame(width: 30, height: 30)
-            Text(coin.symbol.uppercased())
-                .font(.headline)
-</string>
+				<key>type</key>
+				<string>DVTDocumentLocation</string>
 			</dict>
 			<key>title</key>
-			<string>Изображение монеты</string>
+			<string>Override navBar's color appearance</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -96,6 +70,19 @@
 		<dict>
 			<key>destination</key>
 			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>39</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>38</string>
+					<key>Timestamp</key>
+					<string>756387089.1175179</string>
+				</dict>
 				<key>rebasable-url</key>
 				<dict>
 					<key>base</key>
@@ -103,14 +90,74 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>SwiftUICrypto/SwiftUICryptoApp.swift</string>
+						<string>SwiftUICrypto/Home/ViewModel/HomeViewModel.swift</string>
 					</dict>
 				</dict>
-				<key>type</key>
-				<string>DVTDocumentLocation</string>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    private func addSubscibers() {
+</string>
+				<key>leading</key>
+				<string>    
+    ///создаются подписки на полученные монеты из API
+</string>
+				<key>trailing</key>
+				<string>//                coinDataService.$allCoins   //подписываемся на @Published var allCoins
+//                    .sink { [weak self] coins in
+//                        self?.allCoins = coins
+</string>
 			</dict>
 			<key>title</key>
-			<string>Override navBar's color appearance</string>
+			<string>Magic func combine Publishers and Subscribers</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>45</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>44</string>
+					<key>Timestamp</key>
+					<string>755720051.692178</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SwiftUICrypto/Home/Views/CoinRowView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            CoinImageView(coin: coin)
+</string>
+				<key>leading</key>
+				<string>                .foregroundStyle(.secondaryText)
+                .frame(minWidth: 30)
+</string>
+				<key>trailing</key>
+				<string>                .frame(width: 30, height: 30)
+            Text(coin.symbol.uppercased())
+                .font(.headline)
+</string>
+			</dict>
+			<key>title</key>
+			<string>Изображение монеты</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -178,53 +225,6 @@
 			</dict>
 			<key>title</key>
 			<string>Display allCoins or portfolio</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>39</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>38</string>
-					<key>Timestamp</key>
-					<string>756387089.1175179</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>SwiftUICrypto/Home/ViewModel/HomeViewModel.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>    private func addSubscibers() {
-</string>
-				<key>leading</key>
-				<string>    
-    ///создаются подписки на полученные монеты из API
-</string>
-				<key>trailing</key>
-				<string>//                coinDataService.$allCoins   //подписываемся на @Published var allCoins
-//                    .sink { [weak self] coins in
-//                        self?.allCoins = coins
-</string>
-			</dict>
-			<key>title</key>
-			<string>Magic func combine Publishers and Subscribers</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -429,6 +429,53 @@
 			</dict>
 			<key>title</key>
 			<string>Анимируем Path</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>38</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>37</string>
+					<key>Timestamp</key>
+					<string>757857444.840578</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SwiftUICrypto/Launch/LaunchView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                                .offset(y: counter == index ? -5 : 0)
+</string>
+				<key>leading</key>
+				<string>                                .fontWeight(.heavy)
+                                .foregroundStyle(.launchAccent)
+</string>
+				<key>trailing</key>
+				<string>                        }
+                    }
+                    .transition(.scale.animation(.easeIn))
+</string>
+			</dict>
+			<key>title</key>
+			<string>Анимация смещения букв</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

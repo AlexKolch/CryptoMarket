@@ -11,6 +11,7 @@ import SwiftUI
 struct SwiftUICryptoApp: App {
     
     @StateObject private var vm = HomeViewModel() //общий источник данных для всех дочерних вью
+    @State private var isShowLaunchView: Bool = true
     
     //Override navBar's color appearance
     init() {
@@ -20,17 +21,28 @@ struct SwiftUICryptoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    HomeView()
-                        .toolbar(.hidden)
-                }.environmentObject(vm)
-            } else {
-                NavigationView {
-                    HomeView()
-                        .navigationBarHidden(true)
-                }.environmentObject(vm)
+            ZStack {
+                if #available(iOS 16.0, *) {
+                    NavigationStack {
+                        HomeView()
+                            .toolbar(.hidden)
+                    }.environmentObject(vm)
+                } else {
+                    NavigationView {
+                        HomeView()
+                            .navigationBarHidden(true)
+                    }.environmentObject(vm)
+                }
+                ///ЭКРАН ЗАГРУЗКИ
+                ZStack {
+                    if isShowLaunchView {
+                        LaunchView(showLaunchView: $isShowLaunchView)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .zIndex(2.0) //hack поднять этот стек выше нав. стека, чтобы видеть анимацию закрывания экрана
             }
+            
         }
     }
 }
