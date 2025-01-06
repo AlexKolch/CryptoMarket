@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC0241352D2BDFF00098F593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0241342D2BDFF00098F593 /* LaunchScreen.storyboard */; };
 		FC0BB7B92CAAA26700F40279 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB7B82CAAA26700F40279 /* LocalFileManager.swift */; };
 		FC0BB7BB2CAAC63F00F40279 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB7BA2CAAC63F00F40279 /* SearchBarView.swift */; };
 		FC0BB7BD2CAADCCC00F40279 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB7BC2CAADCCC00F40279 /* UIApplication.swift */; };
@@ -49,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC0241322D2BDED00098F593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FC0241342D2BDFF00098F593 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC0BB7B82CAAA26700F40279 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		FC0BB7BA2CAAC63F00F40279 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		FC0BB7BC2CAADCCC00F40279 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -102,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC0241332D2BDFAB0098F593 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				FC0241342D2BDFF00098F593 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		FC29B5152D12DD08004BECE7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,7 +288,9 @@
 				FCC8FD362C3810AA0076CA1C /* Models */,
 				FCC8FD312C37F1CA0076CA1C /* Components */,
 				FCA7C9A42D1EFF15009A53C9 /* Screens */,
+				FC0241332D2BDFAB0098F593 /* Launch */,
 				FCCCB1DE2C37D8ED00370668 /* Assets.xcassets */,
+				FC0241322D2BDED00098F593 /* Info.plist */,
 				FCCCB1D02C37D27A00370668 /* ContentView.swift */,
 				FCCCB1D42C37D27B00370668 /* Preview Content */,
 			);
@@ -350,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC0241352D2BDFF00098F593 /* LaunchScreen.storyboard in Resources */,
 				FCCCB1DF2C37D8ED00370668 /* Assets.xcassets in Resources */,
 				FCCCB1D62C37D27B00370668 /* Preview Assets.xcassets in Resources */,
 			);
@@ -535,10 +549,11 @@
 				DEVELOPMENT_TEAM = 527U829H6E;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUICrypto/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -551,6 +566,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,10 +584,11 @@
 				DEVELOPMENT_TEAM = 527U829H6E;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUICrypto/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -584,6 +601,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
