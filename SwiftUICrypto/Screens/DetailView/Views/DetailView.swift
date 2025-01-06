@@ -41,9 +41,11 @@ struct DetailView: View {
                     .padding(.vertical)
                 
                 VStack(spacing: 20.0) {
-                    overviewTitle
-                    Divider()
-                    descriptionText
+                    VStack(spacing: 8.0) {
+                        overviewTitle
+                        Divider()
+                        descriptionText
+                    }
                     
                     overviewGrid
                     
@@ -62,6 +64,7 @@ struct DetailView: View {
                 navBarTrailingItem
             }
         })
+        .background(Color.myBackground.ignoresSafeArea())
     }
 }
 

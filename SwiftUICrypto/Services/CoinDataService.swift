@@ -24,6 +24,7 @@ final class CoinDataService {
         
         coinSubscription = NetworkManager.downloadData(for: url)
             .decode(type: [CoinModel].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main) //переходим в main после декодирования, так лучше для оптимизации
             .sink { completion in
                 switch completion {
                 case .finished:

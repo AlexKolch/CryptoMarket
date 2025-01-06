@@ -45,7 +45,6 @@
 		FCC8FD412C3C4C410076CA1C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD402C3C4C410076CA1C /* HomeViewModel.swift */; };
 		FCC8FD442C3D3F1C0076CA1C /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8FD432C3D3F1C0076CA1C /* CoinDataService.swift */; };
 		FCCCB1CF2C37D27A00370668 /* SwiftUICryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */; };
-		FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCB1D02C37D27A00370668 /* ContentView.swift */; };
 		FCCCB1D62C37D27B00370668 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCCB1D52C37D27B00370668 /* Preview Assets.xcassets */; };
 		FCCCB1DF2C37D8ED00370668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCCB1DE2C37D8ED00370668 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -91,7 +90,6 @@
 		FCC8FD432C3D3F1C0076CA1C /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		FCCCB1CB2C37D27A00370668 /* SwiftUICrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCCB1CE2C37D27A00370668 /* SwiftUICryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICryptoApp.swift; sourceTree = "<group>"; };
-		FCCCB1D02C37D27A00370668 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FCCCB1D52C37D27B00370668 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FCCCB1DE2C37D8ED00370668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,7 +292,6 @@
 				FC0241332D2BDFAB0098F593 /* Launch */,
 				FCCCB1DE2C37D8ED00370668 /* Assets.xcassets */,
 				FC0241322D2BDED00098F593 /* Info.plist */,
-				FCCCB1D02C37D27A00370668 /* ContentView.swift */,
 				FCCCB1D42C37D27B00370668 /* Preview Content */,
 			);
 			path = SwiftUICrypto;
@@ -388,7 +385,6 @@
 				FC80E75A2D2A94E5006E49E3 /* SettingsView.swift in Sources */,
 				FC0241372D2BECE50098F593 /* LaunchView.swift in Sources */,
 				FC0BB7BB2CAAC63F00F40279 /* SearchBarView.swift in Sources */,
-				FCCCB1D12C37D27A00370668 /* ContentView.swift in Sources */,
 				FC5CAF852C3E70D50029AB49 /* NetworkManager.swift in Sources */,
 				FC29B50C2D0C54EA004BECE7 /* MarketDataModel.swift in Sources */,
 				FCA7C9B32D22C0EA009A53C9 /* Date + Ext..swift in Sources */,

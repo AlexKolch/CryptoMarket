@@ -25,7 +25,7 @@ final class NetworkManager {
     
     static func downloadData(for url: URL) -> AnyPublisher<Data, Error> {
        return URLSession.shared.dataTaskPublisher(for: url)
-             .subscribe(on: DispatchQueue.global(qos: .default)) //меняет контекст выполнения на бэк поток
+             //.subscribe(on: DispatchQueue.global(qos: .default)) //меняет контекст выполнения на бэк поток. (Сессия по дефолту global)
              .tryMap { (result) -> Data in //tryMap - преобразует данные в какой-либо тип
                      //проверяем данные
                  guard let response = result.response as? HTTPURLResponse,
@@ -38,7 +38,8 @@ final class NetworkManager {
                  */
                  return result.data
              }
-             .receive(on: DispatchQueue.main) //при получении переходим в main
+             .retry(3) //будет пытаться загрузить данные 3 раза, в случае неудачи
+//             .receive(on: DispatchQueue.main) //при получении переходим в main (здесь закоментим, чтобы decod произошел в global)
              .eraseToAnyPublisher() //стирает длинный возвращаемый тип и делает его AnyPublisher
     }
 }

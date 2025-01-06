@@ -40,6 +40,7 @@ final class CoinImageService {
             .tryMap({ (data) -> UIImage? in
                 return UIImage(data: data) //преобразуем полученные данные в картинку
             })
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:

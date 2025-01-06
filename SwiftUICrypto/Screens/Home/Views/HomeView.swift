@@ -42,8 +42,14 @@ struct HomeView: View {
                     allCoinsList
                         .transition(.move(edge: .leading))
                 } else {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                    ZStack(alignment: .top, content: {
+                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                            portfolioEmptyText
+                        } else {
+                            portfolioCoinsList
+                        }
+                    })
+                    .transition(.move(edge: .trailing))
                 }
                 
                 Spacer(minLength: 0)
@@ -55,8 +61,8 @@ struct HomeView: View {
                 destination: LoadingDetailView(coin: $selectedCoin),
                 isActive: $isShowDetailView,
                 label: { EmptyView() })
-            }
         }
+    }
     
 }
 
@@ -164,6 +170,7 @@ private extension HomeView {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .listRowBackground(Color.myBackground)
                     .onTapGesture {
                         didTap(on: coin)
                     }
@@ -180,12 +187,25 @@ private extension HomeView {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .listRowBackground(Color.myBackground)
+                    .onTapGesture {
+                        didTap(on: coin)
+                    }
             }
         }
         .listStyle(.plain)
     }
     
-    private func didTap(on coin: CoinModel) {
+    var portfolioEmptyText: some View {
+        Text("You haven't added any coins to your portfolio yet. Click + to get started! 🧐")
+             .font(.callout)
+             .fontWeight(.medium)
+             .foregroundStyle(.secondaryText)
+             .multilineTextAlignment(.center)
+             .padding(50)
+    }
+    
+    func didTap(on coin: CoinModel) {
         selectedCoin = coin
         isShowDetailView.toggle()
     }

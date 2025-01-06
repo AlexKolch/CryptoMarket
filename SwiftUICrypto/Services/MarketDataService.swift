@@ -23,6 +23,7 @@ final class MarketDataService {
       
         marketDataSubscription = NetworkManager.downloadData(for: url)
             .decode(type: GlobalData.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:

@@ -18,29 +18,11 @@ struct SettingsView: View {
     var body: some View {
         if #available(iOS 16.0, *) {
             NavigationStack {
-                List {
-                    aboutAppSection
-                    coinGeckoSection
-                    developerSection
-                    appSection
-                }
-                .modifier(NavSettingsModifier())
-                .listStyle(.grouped)
-                .tint(.blue)
-                .font(.headline)
+                list
             }
         } else {
             NavigationView {
-                List {
-                    aboutAppSection
-                    coinGeckoSection
-                    developerSection
-                    appSection
-                }
-                .modifier(NavSettingsModifier())
-                .listStyle(.grouped)
-                .tint(.blue)
-                .font(.headline)
+                list
             }
         }
     }
@@ -51,6 +33,23 @@ struct SettingsView: View {
 }
 
 private extension SettingsView {
+    
+    var list: some View {
+        List {
+            aboutAppSection
+                .listRowBackground(Color.myBackground.opacity(0.5))
+            coinGeckoSection
+                .listRowBackground(Color.myBackground.opacity(0.5))
+            developerSection
+                .listRowBackground(Color.myBackground.opacity(0.5))
+            appSection
+                .listRowBackground(Color.myBackground.opacity(0.5))
+        }
+        .modifier(NavSettingsModifier())
+        .listStyle(.grouped)
+        .tint(.blue)
+        .font(.headline)
+    }
     
     var aboutAppSection: some View {
         Section {

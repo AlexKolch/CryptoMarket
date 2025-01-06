@@ -121,14 +121,14 @@ private extension HomeViewModel {
         portfolioCoins
             .map { coin -> Double in
                 let currentValue = coin.currentCostHoldings
-                let percentChange = (coin.priceChangePercentage24H ?? 0 / 100) / 100
+                let percentChange = (coin.priceChangePercentage24H ?? 0 / 100)
                 let previousValue = currentValue / (1 + percentChange) //получаем стоимость каждой монеты 24H назад
                 return previousValue      //110 / (1 + 10%) = 100
             }
             .reduce(0, +)
         
-        //Расчет изменения стоимости портфеля в %. ((Новое значение - старое значение) / старое значение) * 100
-        let percentageChange = ((porfolioValue - previousValue) / previousValue) * 100
+        //Расчет изменения стоимости портфеля в %. (Новое значение - старое значение) / старое значение
+        let percentageChange = (porfolioValue - previousValue) / previousValue
         
         let portfolio = StatisticModel(title: "Portfolio Value", value: porfolioValue.asCurrencyWith2Decimals(), percentageChange: percentageChange)
         

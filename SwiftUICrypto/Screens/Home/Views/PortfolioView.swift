@@ -42,6 +42,7 @@ struct Cover: View {
             }
         }
         .navigationTitle("Edit Portfolio")
+        .background(Color.myBackground.ignoresSafeArea())
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 XMarkButton()

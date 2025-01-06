@@ -21,7 +21,7 @@
 				<string>DVTDocumentLocation</string>
 			</dict>
 			<key>title</key>
-			<string>Override navBar's color appearance</string>
+			<string>Override color appearance</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -283,13 +283,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>54</string>
+					<string>60</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>53</string>
+					<string>59</string>
 					<key>Timestamp</key>
-					<string>757778070.163439</string>
+					<string>757878521.600756</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -318,7 +318,7 @@
 </string>
 			</dict>
 			<key>title</key>
-			<string>ссылка на бэкграунде</string>
+			<string>ссылка на DetailView</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
