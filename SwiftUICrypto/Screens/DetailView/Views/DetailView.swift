@@ -7,6 +7,7 @@
 
 import SwiftUI
 ///for hack with lazy init detailView
+//It hack was relevant till IOS 16 and NavigationStack resolved this problem by default
 struct LoadingDetailView: View {
     
     @Binding var coin: CoinModel?
