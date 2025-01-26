@@ -9,6 +9,7 @@
 * SwiftUI
 * Combine
 * CoreData
+* FileManager
 * MVVM Architecture
 * Networking layer URLSession with dataTaskPublisher
 * Integrated API coingecko.com
