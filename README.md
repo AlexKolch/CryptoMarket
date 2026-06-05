@@ -16,6 +16,7 @@
 * Animations
 
 ---
+https://github.com/user-attachments/assets/fc8f35c9-3b15-458e-96db-d13818b53ca6
 ![Image alt](https://github.com/AlexKolch/CryptoMarket/blob/main/Screens/Simulator-Screenshot---iPhone-15---2025-01-06-at-15.13.05.jpg)
 ![Image alt](https://github.com/AlexKolch/CryptoMarket/blob/main/Screens/Simulator-Screenshot---iPhone-15---2024-12-14-at-22.41.14.jpg)
 ![Image alt](https://github.com/AlexKolch/CryptoMarket/blob/main/Screens/Simulator-Screenshot---iPhone-15---2025-01-05-at-16.48.31.jpg)
